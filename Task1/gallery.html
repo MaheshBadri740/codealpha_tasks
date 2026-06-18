@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Image Gallery</title>
+
+    <link rel="stylesheet" href="gallery.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h2>📸 Premium Gallery</h2>
+        </div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search images..."
+            >
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-content">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h3>Categories</h3>
+
+            <ul class="category-list">
+                <li>
+                    <button class="cat-btn active" data-category="all">
+                        All Photos
+                    </button>
+                </li>
+
+                <li>
+                    <button class="cat-btn" data-category="landscape">
+                        🌿 Nature
+                    </button>
+                </li>
+
+                <li>
+                    <button class="cat-btn" data-category="animals">
+                        🦁 Animals
+                    </button>
+                </li>
+
+                <li>
+                    <button class="cat-btn" data-category="food">
+                        🍔 Food
+                    </button>
+                </li>
+
+                <li>
+                    <button class="cat-btn" data-category="sky">
+                        ☁ Sky
+                    </button>
+                </li>
+            </ul>
+
+            <div class="sort-box">
+                <h3>Sort Images</h3>
+
+                <select id="sortSelect">
+                    <option value="default">Default</option>
+                    <option value="name">Name A-Z</option>
+                    <option value="random">Random</option>
+                </select>
+            </div>
+
+        </aside>
+
+        <!-- Gallery Section -->
+        <section class="gallery-container">
+
+            <div class="gallery-grid" id="galleryGrid">
+
+                <!-- Images loaded from JS -->
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+
+        <div class="lightbox-content">
+
+            <span class="close-btn" id="closeBtn">
+                &times;
+            </span>
+
+            <img
+                id="lightboxImage"
+                src=""
+                alt=""
+            >
+
+            <div class="lightbox-info">
+
+                <h2 id="lightboxTitle"></h2>
+
+                <p id="lightboxDesc"></p>
+
+            </div>
+
+            <div class="lightbox-controls">
+
+                <button id="prevBtn">
+                    ⬅ Previous
+                </button>
+
+                <span id="imageCounter"></span>
+
+                <button id="nextBtn">
+                    Next ➡
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Scroll Top -->
+    <button id="scrollTopBtn">
+        ↑
+    </button>
+
+    <script src="gallery.js"></script>
+
+</body>
+</html>
