@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Mahesh Portfolio</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+                <p>Manage Your Portfolio</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#" class="nav-item" data-section="projects">
+                    <i class="fas fa-folder"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#" class="nav-item" data-section="stats">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Stats</span>
+                </a>
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>View Portfolio</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Skills Section -->
+            <section id="skills-section" class="admin-section active">
+                <div class="section-header">
+                    <h1>Manage Skills</h1>
+                    <button class="btn btn-primary" onclick="showAddSkillModal()">
+                        <i class="fas fa-plus"></i> Add Skill
+                    </button>
+                </div>
+                
+                <div class="cards-grid" id="skills-list">
+                    <!-- Skills will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Manage Projects</h1>
+                    <button class="btn btn-primary" onclick="showAddProjectModal()">
+                        <i class="fas fa-plus"></i> Add Project
+                    </button>
+                </div>
+                
+                <div class="cards-grid" id="projects-list">
+                    <!-- Projects will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section id="stats-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Manage Stats</h1>
+                </div>
+                
+                <div class="stats-form">
+                    <div class="form-group">
+                        <label>Years of Experience</label>
+                        <input type="number" id="years-input" min="0" max="50">
+                    </div>
+                    <div class="form-group">
+                        <label>Projects Completed</label>
+                        <input type="number" id="projects-input" min="0" max="1000">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveStats()">Save Stats</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Skill Modal -->
+    <div class="modal" id="skill-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="skill-modal-title">Add Skill</h2>
+                <button class="close-modal" onclick="closeSkillModal()">&times;</button>
+            </div>
+            <form id="skill-form" onsubmit="saveSkill(event)">
+                <input type="hidden" id="skill-index">
+                <div class="form-group">
+                    <label>Skill Name</label>
+                    <input type="text" id="skill-name" required placeholder="e.g., HTML, CSS, JavaScript">
+                </div>
+                <div class="form-group">
+                    <label>Skill Level (%)</label>
+                    <input type="range" id="skill-level" min="0" max="100" value="50" oninput="updateLevelDisplay(this.value)">
+                    <span class="level-display" id="skill-level-display">50%</span>
+                </div>
+                <div class="form-group">
+                    <label>Icon Class (Font Awesome)</label>
+                    <input type="text" id="skill-icon" placeholder="e.g., fab fa-html5, fas fa-code">
+                    <small>Use Font Awesome icon classes</small>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeSkillModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Skill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Project Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="project-modal-title">Add Project</h2>
+                <button class="close-modal" onclick="closeProjectModal()">&times;</button>
+            </div>
+            <form id="project-form" onsubmit="saveProject(event)">
+                <input type="hidden" id="project-index">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" id="project-name" required placeholder="e.g., Portfolio Website">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="project-description" rows="3" required placeholder="Describe your project"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Technologies Used</label>
+                    <input type="text" id="project-technologies" required placeholder="e.g., HTML, CSS, JavaScript">
+                </div>
+                <div class="form-group">
+                    <label>Project Link (optional)</label>
+                    <input type="url" id="project-link" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Image URL (optional)</label>
+                    <input type="url" id="project-image" placeholder="https://...">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeProjectModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
